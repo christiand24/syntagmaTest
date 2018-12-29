@@ -1,0 +1,52 @@
+﻿@model ninja.Models.InvoiceVM
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details invoice @Model.Id @Model.InvoiceType</h2>
+
+@*<p>
+        @Html.ActionLink("Create New", "CreateDetail", new {idInvoice = Model.Id})
+    </p>*@
+<table class="table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.Details.FirstOrDefault().Taxes)</th>
+        <th>@Html.DisplayNameFor(model => model.Details.FirstOrDefault().Description)</th>
+        <th>@Html.DisplayNameFor(model => model.Details.FirstOrDefault().Amount)</th>
+        <th>@Html.DisplayNameFor(model => model.Details.FirstOrDefault().UnitPrice)</th>
+        <th>@Html.DisplayNameFor(model => model.Details.FirstOrDefault().TotalPrice)</th>
+        <th>@Html.DisplayNameFor(model => model.Details.FirstOrDefault().TotalPriceWithTaxes)</th>
+        <th>@Html.ActionLink("Create New", "CreateDetail", new { idInvoice = Model.Id })</th>
+    </tr>
+
+@foreach (var item in Model.Details) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Taxes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UnitPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalPrice)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalPriceWithTaxes)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "UpdateDetail", new { idInvoice = Model.Id, idDetail = item.Id }) |
+            @*@Html.ActionLink("Details", "Details", new { id=item.Id }) |*@
+            @Html.ActionLink("Delete", "DeleteDetail", new { idInvoice= Model.Id, idDetail=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+<h4 style="padding-top:20px">@Html.ActionLink("Back to list", "Index", "Invoice")</h4>
