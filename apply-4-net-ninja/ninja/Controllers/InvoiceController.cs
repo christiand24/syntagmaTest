@@ -70,7 +70,6 @@ namespace ninja.Controllers
             {
                 invoice.InvoiceType = Enum.GetName(typeof(ninja.model.Entity.Invoice.Types), Convert.ToInt32(invoice.InvoiceType));
                 var details = invoice.Details.ToInvoiceDetailList();
-                GetInvoiceManager().UpdateDetail(invoice.Id, details);
                 GetInvoiceManager().UpdateInvoiceType(invoice.Id, invoice.InvoiceType);
             }
             else
